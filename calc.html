@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title>ToDo List (Task2)</title>
+    <script src="Libraries/angular.js"></script>
+    <link href="Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>       
+        var myTodoListAngJS = angular.module("myApp", []);
+        angular.module("myApp");
+
+        myTodoListAngJS.controller("myCalc", function ($scope) {
+           $scope.number1 = "";
+           $scope.number2 = "";
+           $scope.result = "Результат...";
+
+           $scope.calc = function(op){
+            switch (op) {
+        		case "+" :
+        		$scope.result = $scope.add( +$scope.number1,  +$scope.number2);
+        		break;
+        		case "-" :
+        		$scope.result = $scope.sub( +$scope.number1,  +$scope.number2);
+        		break;
+        		case "*" :
+        		$scope.result = $scope.mul( +$scope.number1,  +$scope.number2);
+        		break;
+        		case "/" :
+        		$scope.result = $scope.div( +$scope.number1,  +$scope.number2);
+        		break;
+        	}
+           };
+      
+
+        	$scope.add = function (a, b) {
+        		 return a + b;
+        	}
+        	$scope.sub = function (a, b) {
+        		return a - b;
+        	}
+        	$scope.mul = function (a, b) {
+        		return a * b;
+        	}
+        	$scope.div =  function (a, b) {
+        		if (b == 0) {
+        		 return 0;
+        		} else {
+        			return a / b;
+        		}
+        		
+        	}
+        	
+
+       });
+      
+    </script>
+
+</head>
+<body ng-controller="myCalc">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+      <h3>Калькулятор</h3>
+      Number 1: 
+        <input class="form-control" ng-model="number1" style="text-align: center;"/> <br/>
+      Number 2: 
+        <input class="form-control" ng-model="number2" style="text-align: center;"/><br/>
+    <div class="operation-group" style="text-align: center; margin: 20px 0;">
+        <button id="plus" ng-click="calc('+')">+</button>
+        <button id="minus"  ng-click="calc('-')">-</button>
+        <button id="del" ng-click="calc('/')">/</button>
+        <button id="mnoj" ng-click="calc('*')">*</button>
+    </div>
+        <!--button class="btn btn-default" style="margin: 20px 40%; text-align: center;">Add</button>-->
+
+        <p id="res" style="text-align: center;">{{result}}</p>
+    </div></div></div>
+</body>
+</html>
